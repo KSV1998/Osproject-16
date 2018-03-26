@@ -17,6 +17,15 @@ void sort(pro_sch *queue[10],int n)
 				queue[j+1]=temp;
 			}
 }
+bool comp(pro_sch a,pro_sch b)
+{
+	return a.at < b.at;
+}
+
+bool comp2(pro_sch a,pro_sch b)
+{
+	return a.bt < b.bt && a.at <= ab;
+}
 int main()
 {
 	int n,clock;
