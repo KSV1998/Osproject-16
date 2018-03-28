@@ -15,6 +15,13 @@ ready_que[noe]=a+1;
 noe++;}
 }
 }
+void f_stack(int p,int tm){
+for(a=p+1;a<jk;a++){
+if(at[a]<=tm){
+ready_que[noe]=a+1;
+noe++;}
+}
+}
 void push_Que(int p){
 ready_que[noe]=p+1;
 noe++;
@@ -35,5 +42,18 @@ btm[a]=bt[a];}
 printf("\nEnter time quantum :");
 scanf("%d",&qt);
 system("CLS");
-
+printf("\nGANTT CHART\n |%d",at[0]);
+do{
+if(flag_set==0){
+st=at[0];
+if(btm[0]<=qt){
+tm=st+btm[0];
+btm[0]=0;
+f_stack(p,tm);}
+else{
+btm[0]=btm[0]-qt;
+tm=st+qt;
+f_stack(p,tm);
+push_Que(p);}
+}
 }

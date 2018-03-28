@@ -44,9 +44,6 @@ int main()
 	pro_sch s1[n],*queue[n];
 	int size=0;
 
-	int totalcomplete=0;
-	int totalturnaround=0;
-	int totalwaiting=0;
 	for(int i=0;i<n;i++)
 	{
 		totalwaiting += s[i].wtime;
@@ -83,12 +80,7 @@ int main()
 		s[i].tt=s[i].ct-s[i].at;
 		s[i].wtime=s[i].tt-s[i].bt;
 	}
-	float tat,wtt;
-	for(int i=0;i<n;i++)
-	{
-		tat=tat+s[i].tt;
-		wtt=wtt+s[i].wtime;
-	}
+
 	
 		printf("Average Turn Around Time : %.2f\nAverage Waiting Time     : %.2f",tat/n,wtt/n);
 }
