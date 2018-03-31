@@ -52,10 +52,7 @@ int main()
 	}
 	printf("\nDetails of processes are: \n");
 	printf("ID\tAT\t\tBT\t\tCT\t\tTT\t\tWT\n");
-	for(int i=0;i<n;i++)
-	{
-		printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n",s[i].id,s[i].at,s[i].bt,s[i].bt+s[i].wtime+s[i].at,s[i].bt+s[i].wtime,s[i].wtime);
-	}
+
 	printf("Average Turn Around Time: %.2f\n",(float)(totalturnaround)/n);
 	printf("Average Waiting Time    : %.2f\n",(float)(totalwaiting)/n);
 	printf("\n\n--------------------Shortest JOB FIRST--------------\n\n");
@@ -80,7 +77,12 @@ int main()
 		s[i].tt=s[i].ct-s[i].at;
 		s[i].wtime=s[i].tt-s[i].bt;
 	}
-
+	float tat,wtt;
+	for(int i=0;i<n;i++)
+	{
+		tat=tat+s[i].tt;
+		wtt=wtt+s[i].wtime;
+	}
 	
 		printf("Average Turn Around Time : %.2f\nAverage Waiting Time     : %.2f",tat/n,wtt/n);
 }

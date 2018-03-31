@@ -56,4 +56,14 @@ tm=st+qt;
 f_stack(p,tm);
 push_Que(p);}
 }
+else{
+p=ready_que[0]-1;
+st=tm;
+for(a=0;a<noe && noe!=1;a++)
+ready_que[a]=ready_que[a+1];
+noe--;
+if(btm[p]<=qt){
+tm=st+btm[p];
+btm[p]=0;
+s_stack(p, tm);}
 }
