@@ -66,4 +66,13 @@ if(btm[p]<=qt){
 tm=st+btm[p];
 btm[p]=0;
 s_stack(p, tm);}
+else{
+btm[p]=btm[p]-qt;
+tm=st+qt;
+s_stack(p, tm);
+push_Que(p);}
+}
+if(btm[p]==0){
+ct[p]=tm;
+}
 }
