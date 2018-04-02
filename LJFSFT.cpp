@@ -17,15 +17,6 @@ void sort(pro_sch *queue[10],int n)
 				queue[j+1]=temp;
 			}
 }
-bool comp(pro_sch a,pro_sch b)
-{
-	return a.at < b.at;
-}
-
-bool comp2(pro_sch a,pro_sch b)
-{
-	return a.bt < b.bt && a.at <= ab;
-}
 int main()
 {
 	int n,clock;
@@ -43,7 +34,17 @@ int main()
 	printf("--------------------LONGEST JOB FIRST--------------\nSequence of flagcution : \n");
 	pro_sch s1[n],*queue[n];
 	int size=0;
-
+if(size>0 && fc == NULL)
+		{
+			sort(queue,size);
+			queue[size-1]->flag=true;
+			fc = queue[size-1];
+			printf("|P%d| ",queue[size-1]->id);
+			size--;
+		}
+	int totalcomplete=0;
+	int totalturnaround=0;
+	int totalwaiting=0;
 	for(int i=0;i<n;i++)
 	{
 		totalwaiting += s[i].wtime;
@@ -52,7 +53,10 @@ int main()
 	}
 	printf("\nDetails of processes are: \n");
 	printf("ID\tAT\t\tBT\t\tCT\t\tTT\t\tWT\n");
-
+	for(int i=0;i<n;i++)
+	{
+		printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n",s[i].id,s[i].at,s[i].bt,s[i].bt+s[i].wtime+s[i].at,s[i].bt+s[i].wtime,s[i].wtime);
+	}
 	printf("Average Turn Around Time: %.2f\n",(float)(totalturnaround)/n);
 	printf("Average Waiting Time    : %.2f\n",(float)(totalwaiting)/n);
 	printf("\n\n--------------------Shortest JOB FIRST--------------\n\n");
