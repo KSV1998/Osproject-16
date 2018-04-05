@@ -4,6 +4,13 @@ using namespace std;
 int at[50], bt[50], ct[50]={0}, qt, ready_que[50]={0}, c=0, st, flag_set=0, tm=0, noe=0, p=0, btm[50]={0}, tt, wt,a,b;
 float att, awt;
 int jk;
+void f_stack(int p,int tm){
+for(a=p+1;a<jk;a++){
+if(at[a]<=tm){
+ready_que[noe]=a+1;
+noe++;}
+}
+}
 void s_stack(int p, int tm){
 for(a=p+1;a<jk;a++){
 int fl=0;
@@ -11,13 +18,6 @@ for(b=0;b<noe;b++)
 if(ready_que[b]==a+1)
 fl++;
 if(at[a]<=tm && fl==0 && btm[a]!=0){
-ready_que[noe]=a+1;
-noe++;}
-}
-}
-void f_stack(int p,int tm){
-for(a=p+1;a<jk;a++){
-if(at[a]<=tm){
 ready_que[noe]=a+1;
 noe++;}
 }
@@ -75,4 +75,19 @@ push_Que(p);}
 if(btm[p]==0){
 ct[p]=tm;
 }
+flag_set++;
+printf("| P%d |%d",p+1,tm);
 }
+while(noe!=0);
+printf("|\n\nPROCESS\t AT\t BT\t CT\t TT\t WT\n");
+for(a=0;a<jk;a++){
+tt=ct[a]-at[a];
+wt=tt-bt[a];
+printf("P%d \t %d \t %d \t %d \t %d \t %d\n",a+1,at[a],bt[a],ct[a],tt,wt);
+awt=awt+wt;
+att=att+tt;
+}
+printf("\nAVERAGE TT: %.2f\nAVERAGE WT: %.2f",att/jk,awt/jk);
+printf("\n\nAttributes Used are :\nAT: Arrival Time   \tBT: Burst Time\nCT: Completion Time\tTT:Turn Around Time\nWT:Waiting Time");
+}
+

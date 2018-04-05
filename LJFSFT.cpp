@@ -17,6 +17,15 @@ void sort(pro_sch *queue[10],int n)
 				queue[j+1]=temp;
 			}
 }
+bool comp(pro_sch a,pro_sch b)
+{
+	return a.at < b.at;
+}
+
+bool comp2(pro_sch a,pro_sch b)
+{
+	return a.bt < b.bt && a.at <= ab;
+}
 int main()
 {
 	int n,clock;
@@ -34,7 +43,32 @@ int main()
 	printf("--------------------LONGEST JOB FIRST--------------\nSequence of flagcution : \n");
 	pro_sch s1[n],*queue[n];
 	int size=0;
-if(size>0 && fc == NULL)
+	clock=0;
+	pro_sch *fc = NULL;
+	while(true)
+	{
+		bool done=true;
+		for(int i=0;i<n;i++)
+		{
+			if(s[i].flag==false)
+			{
+				done=false;
+				break;
+			}
+		}
+		if(done)
+			break;
+		for(int i=0;i<n;i++)
+		{
+			if(s[i].at==clock && s[i].flag==false){
+				queue[size]=&s[i];
+				size++;
+			}
+		}
+		if ( fc != NULL && fc->bt + fc->wtime + fc->at == clock) {
+			fc = NULL;
+		}
+		if(size>0 && fc == NULL)
 		{
 			sort(queue,size);
 			queue[size-1]->flag=true;
@@ -42,6 +76,12 @@ if(size>0 && fc == NULL)
 			printf("|P%d| ",queue[size-1]->id);
 			size--;
 		}
+		for(int j=0;j<size;j++)
+		{
+			queue[j]->wtime++;
+		}
+		clock++;
+	}
 	int totalcomplete=0;
 	int totalturnaround=0;
 	int totalwaiting=0;
